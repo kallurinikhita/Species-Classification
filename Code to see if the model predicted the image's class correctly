@@ -1,0 +1,19 @@
+
+
+classes= {0:'plane', 1:'auto', 2:'bird', 3:'cat', 4:'deer', 5:'dog', 6:'frog', 7:'horse', 8:'ship', 9:'truck'}
+
+def show_image_xtest(index):
+    plt.imshow(x_test[index])
+    plt.xlabel(classes[y_test[index][0]])
+    plt.show()
+
+def prediction_matches(index):
+    predicted_probabilities= model.predict(x_test)[index]
+    predicted_class= np.argmax(predicted_probabilities)
+    actual_class= y_test[index][0]
+    if predicted_class == actual_class:
+     print(f'Model CORRECTLY predicted the class of {classes[predicted_class]}.')
+     show_image(index)
+    if predicted_class != actual_class:
+     print(f'Model INCORRECTLY predicted a class of {classes[predicted_class]}.')
+     print(f'Actual class: {classes[y_test[index][0]]}')
