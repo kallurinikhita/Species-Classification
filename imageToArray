@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+#load images using PIL
+from PIL import Image
+# load the image
+image = Image.open('/Users/nkalluri/Downloads/archive/raw-img/cane/OIP-_C2PNdS78kIuYUyg5gD5oAHaFj.jpeg')
+# summarize some details about the image
+print(image.format)
+print(image.mode)
+print(image.size)
+# show the image
+image.show()
+
+
+# load and display an image with Matplotlib
+from matplotlib import image
+from matplotlib import pyplot
+# load image as pixel array
+data = image.imread('/Users/nkalluri/Downloads/archive/raw-img/cane/OIP-_C2PNdS78kIuYUyg5gD5oAHaFj.jpeg')
+# summarize shape of the pixel array
+print(data.dtype)
+print(data.shape)
+# display the array of pixels as an image
+pyplot.imshow(data)
+pyplot.show()
+
+
+
+
+# load all images in a directory
+from os import listdir
+from matplotlib import image
+# load all images in a directory
+loaded_images = list()
+for filename in listdir('/Users/nkalluri/Downloads/archive/raw-img/cane/'):
+	# load image
+	img_data = image.imread('/Users/nkalluri/Downloads/archive/raw-img/cane/' + filename)
+	# store loaded image
+	loaded_images.append(img_data)
+	print('> loaded %s %s' % (filename, img_data.shape))
+    
